@@ -46,8 +46,14 @@ export default {
             this.$refs.login.validate(valid => {
                 if (valid) {
                     this.$message.success('登录成功');
-                    localStorage.setItem('ms_username', this.param.username);
-                    this.$router.push('/');
+                    // localStorage.setItem('ms_username', this.param.username);
+                    // this.$router.push('/');
+                    this.$http.post('api/login',{
+                        username:this.param.username,
+                        password:this.param.password,
+                        selector:'测试'
+                    })
+                    this.$
                 } else {
                     this.$message.error('请输入账号和密码');
                     console.log('error submit!!');
